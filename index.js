@@ -16,6 +16,9 @@ stopBtn.addEventListener('click', onStopBtnClick);
 let intervalId;
 
 function onStartBtnClick() {
+    if (intervalId) {
+        return;
+    }
     intervalId = setInterval(() => {
         changeColor(colors);
     }, 1000);
@@ -25,6 +28,7 @@ function onStartBtnClick() {
 function onStopBtnClick() {
     clearInterval(intervalId);
     startBtn.removeAttribute('disabled');
+    intervalId = null;
 }
 
 function changeColor(colors) {
